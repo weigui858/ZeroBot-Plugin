@@ -25,7 +25,7 @@ import (
 	//                          vvvvvvvvvvvvvv                          //
 	//                               vvvv                               //
 
-	// webctrl "github.com/FloatTech/zbputils/control/web"           // web 后端控制
+	_ "github.com/FloatTech/zbputils/control/web"           // web 后端控制
 
 	_ "github.com/FloatTech/ZeroBot-Plugin/plugin/chat" // 基础词库
 
@@ -165,7 +165,7 @@ func init() {
 	sus := make([]int64, 0, 16)
 	// 解析命令行参数
 	// 输入 `-g 监听地址:端口` 指定 gui 访问地址，默认 127.0.0.1:3000
-	// g := flag.String("g", "127.0.0.1:3000", "Set web gui listening address.")
+	g := flag.String("g", "127.0.0.1:3000", "Set web gui listening address.")
 	d := flag.Bool("d", false, "Enable debug level log and higher.")
 	w := flag.Bool("w", false, "Enable warning level log and higher.")
 	h := flag.Bool("h", false, "Display this help.")
@@ -208,7 +208,7 @@ func init() {
 	// sus = append(sus, 87654321)
 
 	// 启用 gui
-	// webctrl.InitGui(*g)
+	webctrl.InitGui(*g)
 
 	if *runcfg != "" {
 		f, err := os.Open(*runcfg)
